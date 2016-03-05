@@ -1,0 +1,74 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Cet.UI.TileListView"
+    >
+
+    <Style TargetType="local:TileListView" >
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:TileListView">
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        >
+                        <Grid
+                            Background="Transparent"
+                            >
+                            <local:TiledCanvas
+                                ColumnCount="{TemplateBinding Columns}"
+                                RowCount="{TemplateBinding Rows}"
+                                RowHeight="{TemplateBinding BlockSize}"
+                                ColumnWidth="{TemplateBinding BlockSize}"
+                                BlockMargin="{TemplateBinding BlockMargin}"
+                                GridLineBrush="{TemplateBinding GridLineBrush}"
+                                GridLineThickness="{TemplateBinding GridLineThickness}"
+                                ShowGridLines="{TemplateBinding IsEditable}"
+                                BlockHighlight="{TemplateBinding BlockHighlight}"
+                                />
+                            
+                            <ItemsPresenter
+                                />
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <Canvas />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style TargetType="local:TileListViewItem" >
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:TileListViewItem">
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        >
+                        <Grid>
+                            <ContentPresenter
+                                />
+
+                            <Canvas
+                                x:Name="AdornerOverlay"
+                                Background="Transparent"
+                                IsHitTestVisible="{TemplateBinding IsEditable}"
+                                >
+                            </Canvas>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>
